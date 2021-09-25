@@ -1,5 +1,4 @@
-# Final_Project_LBE
-<h1>Final Project LBE RPL</h1>
+# Final_Project_LBE_RPL
 <h2>Web "Movie Overview"<h2>
 <h3> Requirement <h3>
   <ul>  

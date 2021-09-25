@@ -1,0 +1,56 @@
+*
+{
+    background-color: black;
+}
+
+.input-field {
+    background: #2f3640;
+    height: 100px;
+    width: 375px;
+    border-radius: 40px;
+    padding: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-text {
+    box-shadow: none;
+    padding-left: 10px;
+    background: none;
+    outline:none;
+    float:left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    line-height: 40px;
+    width: 300px;
+    margin-top: 12px;
+}
+
+#search
+{
+    color: white;
+    display: flex;
+    font-size: 20px;
+    margin-top: 25px;
+    padding-left: 20px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+#icons
+{
+    background-color: transparent;
+}
+
+input, select, textarea{
+    color: white;
+}
+
+textarea:focus, input:focus {
+    color: white;
+}
