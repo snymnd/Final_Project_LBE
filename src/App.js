@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Nav from './Components/Nav';
 import SearchArea from './Components/SearchArea';
 import MovieList from './Components/MovieList';
 import Pagination from './Components/Pagination';
 import MovieInfo from './Components/MovieInfo';
-import '../App.css';
+import './App.css';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 class App extends Component {
   constructor()
@@ -63,17 +63,18 @@ class App extends Component {
       <Router>
         <div className="App">
           <Nav />
-          {this.state.currentMovie == null ? 
-            //true
-            <div>
-              <SearchArea handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
-              <MovieList movies={this.state.movies} viewMovieInfo={this.viewMovieInfo}/>
-                    {this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.state.currentPage}/> : ''}
-            </div>
-            :
-            //false
-            <MovieInfo currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo}/>
-          }
+            <Switch>
+              <Route exact path="/">
+                <div>
+                  <SearchArea handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+                  <MovieList movies={this.state.movies} viewMovieInfo={this.viewMovieInfo}/>
+                  {this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.state.currentPage}/> : ''}
+                </div>
+              </Route>
+              <Route path="/MovieInfo">
+                <MovieInfo currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo}/>
+              </Route>
+            </Switch>
         </div>
       </Router> 
   );
