@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Nav from './Nav';
-import SearchArea from './SearchArea';
-import MovieList from './MovieList';
-import Pagination from './Pagination';
-import MovieInfo from './MovieInfo';
+import Nav from './Components/Nav';
+import SearchArea from './Components/SearchArea';
+import MovieList from './Components/MovieList';
+import Pagination from './Components/Pagination';
+import MovieInfo from './Components/MovieInfo';
 import '../App.css';
 
 class App extends Component {
