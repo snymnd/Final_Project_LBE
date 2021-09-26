@@ -69,3 +69,13 @@ input, select, textarea{
 textarea:focus, input:focus {
     color: white;
 }
+
+#movieInfo
+{
+    color: white;
+}
+
+#movieDetails
+{
+    color: white;
+}
