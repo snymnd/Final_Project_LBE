@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function MovieInfo(props) {
+
   return (
     <div className="container ">
       <div >
-        <Link to="/" className="waves-effect waves-light btn" style={{ cursor: "pointer", marginTop: 50, marginBottom:50}} onClick={props.closeMovieInfo}> <i className="material-icons left"></i> Go Back</Link>
+        <button className="favorite btn" style={{ cursor: "pointer", marginBottom:30}} onClick={ () => props.addFavoriteHandle(props.currentMovie.id) }>Add to Favorite</button>
       </div>
       <div className="col s12">
         <div className="card">
