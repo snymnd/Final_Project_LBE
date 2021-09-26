@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Nav from './Components/Nav';
 import SearchArea from './Components/SearchArea';
 import MovieList from './Components/MovieList';
 import Pagination from './Components/Pagination';
 import MovieInfo from './Components/MovieInfo';
-import '../App.css';
+import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+
 
 class App extends Component {
   constructor()
@@ -16,7 +17,8 @@ class App extends Component {
        searchTerm: '',
        totalResults: 0,
        currentPage: 1,
-       currentMovie: null
+       currentMovie: null,
+       favoriteMovie : []
     }
   }
 
@@ -44,7 +46,7 @@ class App extends Component {
   }
 
   viewMovieInfo = (id) => {
-    const filteredMovie = this.state.movies.filter(movie => movie.id == id)
+    const filteredMovie = this.state.movies.filter(movie => movie.id === id)
 
     const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null
     //kalo ada movienya kita masukkin ke newCurrentMovie
@@ -56,6 +58,12 @@ class App extends Component {
     this.setState({currentMovie: null})
   }
 
+  addFavoriteHandle = (id) =>{
+    const addMovie = this.state.movies.filter(movie => movie.id === id)
+   
+    this.setState({favoriteMovie: [...this.state.favoriteMovie, addMovie[0]]})
+  }
+
   render() {
     const numberPages = Math.floor(this.state.totalResults/20)
     
@@ -63,17 +71,33 @@ class App extends Component {
       <Router>
         <div className="App">
           <Nav />
-          {this.state.currentMovie == null ? 
-            //true
-            <div>
-              <SearchArea handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
-              <MovieList movies={this.state.movies} viewMovieInfo={this.viewMovieInfo}/>
-                    {this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.state.currentPage}/> : ''}
-            </div>
-            :
-            //false
-            <MovieInfo currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo}/>
-          }
+            <Switch >
+              <Route exact path="/">
+                <div >
+                  <Link to="/favorite" className="waves-effect waves-light btn" style={{ cursor: "pointer", marginTop:10, marginBottom:10}}> <i className="material-icons left"></i>Favorite</Link>
+                </div>
+                <div>
+                  <SearchArea handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+                  <MovieList movies={this.state.movies} viewMovieInfo={this.viewMovieInfo}/>
+                  {this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.state.currentPage}/> : ''}
+                </div>
+              </Route>
+              <Route path="/favorite">
+                <div >
+                <Link to="/" className="waves-effect waves-light btn" style={{ cursor: "pointer", marginTop:10, marginBottom:10}}> <i className="material-icons left"></i>Back</Link>
+                <MovieList movies={this.state.favoriteMovie} viewMovieInfo={this.viewMovieInfo}/>
+                </div> 
+              </Route>
+              <Route path="/MovieInfo">
+                <div >
+                  <Link to="/" className="waves-effect waves-light btn" style={{ cursor: "pointer", marginTop: 50, marginBottom:50}} onClick={this.closeMovieInfo}> <i className="material-icons left"></i> Go Back</Link>
+               </div>
+                { this.state.currentMovie != null
+                  ?<MovieInfo currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo} addFavoriteHandle={this.addFavoriteHandle}/>
+                  : ""
+                }
+              </Route>
+            </Switch>
         </div>
       </Router> 
   );

@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
   return (
-    <nav className="#b71c1c red darken-4">
+    <nav className="#b71c1c red darken-4" id="top">
       <div className="nav-wrapper container #b71c1c red darken-4">
-        <a href="#" className="brand-logo">Movie Finder</a>
+        <Link to="/" className="brand-logo">Movie Finder</Link>
       </div>
     </nav>
   )

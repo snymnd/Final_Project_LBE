@@ -1,18 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Movie = (props) => {
     return(
         <div className="col s12 m6 l3">
-            <div className="card ">
-                <div className="card-image waves-effect waves-block waves-light #ff8a80 red accent-1">
+            <div className="card">
+                <div className="card-image waves-effect waves-block waves-light">
                     {
-                        props.image == null ? <img src={`https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg`} alt="card image"
-                        style={{width:"100%", height: 360}} /> : <img src={`https://image.tmdb.org/t/p/w185${props.image}`}/>
+                        props.image == null ? <img src="https://previews.123rf.com/images/kaymosk/kaymosk1804/kaymosk180400006/100130939-error-404-page-not-found-error-with-glitch-effect-on-screen-vector-illustration-for-your-design-.jpg" alt="card"
+                        style={{width:"100%", height: 360}} /> : <img src={`https://image.tmdb.org/t/p/w500${props.image}`} style={{width:"100%", height: 360}} alt="katanya gambar"/>
                     }
                 </div>
                 <div className="card-content">
                     <p>
-                        <a href="#" onClick={() => props.viewMovieInfo(props.movieId)}>View Details</a>
+                        <Link to={`/MovieInfo/${props.movieId}`} onClick={() => props.viewMovieInfo(props.movieId)}>View Details</Link>
                     </p>
                 </div>
             </div>

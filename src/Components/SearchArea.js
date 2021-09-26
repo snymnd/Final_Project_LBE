@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from "react";
 
 const SearchArea = (props) => {
     return (
@@ -11,7 +11,7 @@ const SearchArea = (props) => {
                             placeholder="Search movie"
                             onChange={props.handleChange}/>    
                         </div>
-                        <button id="search" onClick={props.handleSubmit}><i class="fas fa-search" id="icons"></i></button>
+                        <button id="search" onClick={props.handleSubmit}><i className="fa fa-search" id="icons"></i></button>
                     </form>
                 </section>
             </div>
